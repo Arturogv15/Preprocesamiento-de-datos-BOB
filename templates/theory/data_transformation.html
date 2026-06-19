@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block title %}Transformación de Datos - Teoría{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <h1 class="mb-4"><i class="fas fa-exchange-alt"></i> Transformación de Datos</h1>
+        
+        <div class="theory-content">
+            <h2>Introducción</h2>
+            <p>La transformación de datos es el proceso de convertir datos de un formato o estructura a otro. Es esencial para preparar los datos para el análisis y modelado.</p>
+            
+            <h2>1. Normalización y Estandarización</h2>
+            <p>Estas técnicas escalan las características numéricas a un rango común sin distorsionar las diferencias en los rangos de valores.</p>
+            
+            <h3>Min-Max Normalization (Normalización Min-Max)</h3>
+            <p>Escala los valores al rango [0, 1]:</p>
+            <pre><code>X_norm = (X - X_min) / (X_max - X_min)</code></pre>
+            <ul>
+                <li><strong>Ventajas:</strong> Preserva la forma de la distribución original</li>
+                <li><strong>Desventajas:</strong> Sensible a outliers</li>
+                <li><strong>Cuándo usar:</strong> Cuando conoces los límites de tus datos</li>
+            </ul>
+            
+            <h3>Standardization (Estandarización Z-score)</h3>
+            <p>Transforma los datos para tener media 0 y desviación estándar 1:</p>
+            <pre><code>X_std = (X - μ) / σ</code></pre>
+            <ul>
+                <li><strong>Ventajas:</strong> Menos sensible a outliers que Min-Max</li>
+                <li><strong>Desventajas:</strong> No garantiza un rango específico</li>
+                <li><strong>Cuándo usar:</strong> Para algoritmos que asumen distribución normal</li>
+            </ul>
+            
+            <h3>Robust Scaling (Escalado Robusto)</h3>
+            <p>Usa la mediana y el rango intercuartílico (IQR):</p>
+            <pre><code>X_robust = (X - median) / IQR</code></pre>
+            <ul>
+                <li><strong>Ventajas:</strong> Muy robusto a outliers</li>
+                <li><strong>Cuándo usar:</strong> Cuando tienes muchos outliers</li>
+            </ul>
+            
+            <h3>MaxAbs Scaling</h3>
+            <p>Escala dividiendo por el valor absoluto máximo:</p>
+            <pre><code>X_maxabs = X / |X_max|</code></pre>
+            <ul>
+                <li><strong>Ventajas:</strong> No desplaza/centra los datos</li>
+                <li><strong>Cuándo usar:</strong> Para datos dispersos (sparse data)</li>
+            </ul>
+            
+            <h2>2. Codificación de Variables Categóricas</h2>
+            <p>Los algoritmos de machine learning requieren datos numéricos. Debemos convertir variables categóricas a formato numérico.</p>
+            
+            <h3>One-Hot Encoding (Codificación One-Hot)</h3>
+            <p>Crea una columna binaria para cada categoría:</p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Original</th>
+                            <th>Color_Rojo</th>
+                            <th>Color_Verde</th>
+                            <th>Color_Azul</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rojo</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Verde</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Azul</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul>
+                <li><strong>Ventajas:</strong> No asume orden entre categorías</li>
+                <li><strong>Desventajas:</strong> Aumenta dimensionalidad</li>
+                <li><strong>Cuándo usar:</strong> Variables nominales sin orden</li>
+            </ul>
+            
+            <h3>Label Encoding (Codificación de Etiquetas)</h3>
+            <p>Asigna un número entero a cada categoría:</p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Original</th>
+                            <th>Codificado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rojo</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Verde</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Azul</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul>
+                <li><strong>Ventajas:</strong> Simple, no aumenta dimensionalidad</li>
+                <li><strong>Desventajas:</strong> Implica orden artificial</li>
+                <li><strong>Cuándo usar:</strong> Variables target en clasificación</li>
+            </ul>
+            
+            <h3>Ordinal Encoding (Codificación Ordinal)</h3>
+            <p>Similar a Label Encoding pero respeta el orden natural:</p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Original</th>
+                            <th>Codificado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bajo</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Medio</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Alto</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul>
+                <li><strong>Cuándo usar:</strong> Variables ordinales con orden natural</li>
+            </ul>
+            
+            <h3>Target Encoding (Codificación por Target)</h3>
+            <p>Reemplaza cada categoría con la media del target para esa categoría:</p>
+            <ul>
+                <li><strong>Ventajas:</strong> Captura relación con el target</li>
+                <li><strong>Desventajas:</strong> Riesgo de overfitting</li>
+                <li><strong>Cuándo usar:</strong> Alta cardinalidad, con validación cruzada</li>
+            </ul>
+            
+            <h2>3. Transformaciones de Características</h2>
+            
+            <h3>Transformación Logarítmica</h3>
+            <p>Útil para datos con distribución sesgada:</p>
+            <pre><code>X_log = log(X + 1)</code></pre>
+            
+            <h3>Transformación de Potencia (Box-Cox)</h3>
+            <p>Encuentra la mejor transformación de potencia para normalizar datos.</p>
+            
+            <h3>Binning (Discretización)</h3>
+            <p>Convierte variables continuas en categóricas:</p>
+            <ul>
+                <li>Edad → Grupos de edad (0-18, 19-35, 36-60, 60+)</li>
+                <li>Ingreso → Rangos de ingreso</li>
+            </ul>
+            
+            <div class="alert alert-warning mt-4">
+                <h5><i class="fas fa-exclamation-triangle"></i> Importante</h5>
+                <p class="mb-0">
+                    <strong>Siempre aplica las mismas transformaciones a los datos de entrenamiento y prueba.</strong>
+                    Guarda los parámetros de transformación (media, desviación, etc.) del conjunto de entrenamiento
+                    y úsalos para transformar el conjunto de prueba.
+                </p>
+            </div>
+            
+            <div class="alert alert-success mt-4">
+                <h5><i class="fas fa-lightbulb"></i> Mejores Prácticas</h5>
+                <ul class="mb-0">
+                    <li>Escala después de dividir train/test para evitar data leakage</li>
+                    <li>Usa One-Hot para variables nominales, Ordinal para ordinales</li>
+                    <li>Considera la interpretabilidad del modelo al elegir codificación</li>
+                    <li>Documenta todas las transformaciones aplicadas</li>
+                </ul>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{{ url_for('main.practice') }}" class="btn btn-success btn-lg">
+                    <i class="fas fa-flask"></i> Practicar Transformaciones
+                </a>
+                <a href="{{ url_for('main.theory') }}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Volver a Teoría
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

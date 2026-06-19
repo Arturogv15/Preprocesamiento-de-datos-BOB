@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Limpieza de Datos - Teoría{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <h1 class="mb-4"><i class="fas fa-broom"></i> Limpieza de Datos</h1>
+        
+        <div class="theory-content">
+            <h2>Introducción</h2>
+            <p>La limpieza de datos es el proceso de detectar y corregir (o eliminar) registros corruptos o inexactos de un conjunto de datos. Es una etapa crucial en el preprocesamiento de datos.</p>
+            
+            <h2>1. Valores Faltantes</h2>
+            <p>Los valores faltantes son un problema común en datasets reales. Pueden ocurrir por diversas razones:</p>
+            <ul>
+                <li>Errores en la recolección de datos</li>
+                <li>Datos no aplicables</li>
+                <li>Problemas técnicos</li>
+            </ul>
+            
+            <h3>Técnicas de Imputación</h3>
+            <ul>
+                <li><strong>Mean/Median/Mode:</strong> Reemplazar con la media, mediana o moda</li>
+                <li><strong>Forward/Backward Fill:</strong> Usar el valor anterior o siguiente</li>
+                <li><strong>KNN Imputation:</strong> Usar k-vecinos más cercanos</li>
+                <li><strong>Eliminación:</strong> Remover filas con valores faltantes</li>
+            </ul>
+            
+            <h2>2. Duplicados</h2>
+            <p>Los registros duplicados pueden sesgar los análisis y modelos. Es importante identificarlos y manejarlos apropiadamente.</p>
+            
+            <h2>3. Outliers</h2>
+            <p>Los valores atípicos pueden afectar significativamente los resultados del análisis.</p>
+            
+            <h3>Métodos de Detección</h3>
+            <ul>
+                <li><strong>IQR (Interquartile Range):</strong> Basado en cuartiles</li>
+                <li><strong>Z-Score:</strong> Basado en desviación estándar</li>
+                <li><strong>Isolation Forest:</strong> Método de machine learning</li>
+            </ul>
+            
+            <div class="alert alert-success mt-4">
+                <h5><i class="fas fa-lightbulb"></i> Consejo</h5>
+                <p class="mb-0">Siempre analiza tus datos antes de aplicar técnicas de limpieza. No todos los métodos son apropiados para todos los casos.</p>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{{ url_for('main.practice') }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-flask"></i> Practicar en el Laboratorio
+                </a>
+                <a href="{{ url_for('main.theory') }}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Volver a Teoría
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

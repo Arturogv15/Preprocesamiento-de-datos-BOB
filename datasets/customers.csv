@@ -1,0 +1,201 @@
+customer_id,customer_name,city,state,loyalty_tier
+1,Customer_1,Houston,TX,Gold
+2,Customer_2,Houston,CA,Bronze
+3,Customer_3,Houston,CA,Bronze
+4,Customer_4,New York,IL,Gold
+5,Customer_5,New York,NY,Silver
+6,Customer_6,Los Angeles,NY,Silver
+7,Customer_7,New York,CA,Bronze
+8,Customer_8,Houston,NY,Silver
+9,Customer_9,Los Angeles,CA,Silver
+10,Customer_10,Los Angeles,IL,Silver
+11,Customer_11,Los Angeles,CA,Bronze
+12,Customer_12,Houston,CA,Gold
+13,Customer_13,Chicago,IL,Silver
+14,Customer_14,Houston,NY,Bronze
+15,Customer_15,New York,CA,Bronze
+16,Customer_16,New York,CA,Gold
+17,Customer_17,Houston,IL,Silver
+18,Customer_18,Houston,NY,Silver
+19,Customer_19,Los Angeles,CA,Gold
+20,Customer_20,Houston,IL,Gold
+21,Customer_21,Los Angeles,CA,Bronze
+22,Customer_22,New York,TX,Bronze
+23,Customer_23,Los Angeles,IL,Gold
+24,Customer_24,Houston,NY,Silver
+25,Customer_25,New York,NY,Bronze
+26,Customer_26,Chicago,NY,Bronze
+27,Customer_27,Los Angeles,NY,Silver
+28,Customer_28,New York,CA,Bronze
+29,Customer_29,Los Angeles,CA,Silver
+30,Customer_30,New York,NY,Silver
+31,Customer_31,New York,NY,Silver
+32,Customer_32,Los Angeles,NY,Gold
+33,Customer_33,Chicago,CA,Gold
+34,Customer_34,New York,NY,Gold
+35,Customer_35,New York,NY,Silver
+36,Customer_36,New York,TX,Silver
+37,Customer_37,Chicago,TX,Gold
+38,Customer_38,Chicago,NY,Bronze
+39,Customer_39,Houston,IL,Silver
+40,Customer_40,Los Angeles,NY,Bronze
+41,Customer_41,Chicago,TX,Bronze
+42,Customer_42,Los Angeles,IL,Silver
+43,Customer_43,Houston,IL,Silver
+44,Customer_44,Los Angeles,NY,Bronze
+45,Customer_45,Chicago,TX,Bronze
+46,Customer_46,Los Angeles,TX,Gold
+47,Customer_47,Chicago,IL,Gold
+48,Customer_48,Los Angeles,NY,Silver
+49,Customer_49,Chicago,CA,Gold
+50,Customer_50,Chicago,CA,Gold
+51,Customer_51,Los Angeles,TX,Gold
+52,Customer_52,Houston,CA,Gold
+53,Customer_53,New York,TX,Bronze
+54,Customer_54,Houston,TX,Silver
+55,Customer_55,Los Angeles,TX,Gold
+56,Customer_56,Houston,CA,Bronze
+57,Customer_57,Chicago,TX,Bronze
+58,Customer_58,New York,IL,Bronze
+59,Customer_59,Los Angeles,NY,Gold
+60,Customer_60,Los Angeles,NY,Gold
+61,Customer_61,Los Angeles,TX,Silver
+62,Customer_62,New York,NY,Gold
+63,Customer_63,Chicago,CA,Gold
+64,Customer_64,Los Angeles,CA,Bronze
+65,Customer_65,Houston,NY,Silver
+66,Customer_66,Los Angeles,CA,Gold
+67,Customer_67,Los Angeles,NY,Gold
+68,Customer_68,Los Angeles,NY,Bronze
+69,Customer_69,Los Angeles,NY,Bronze
+70,Customer_70,Chicago,TX,Gold
+71,Customer_71,Houston,NY,Silver
+72,Customer_72,Chicago,TX,Silver
+73,Customer_73,Houston,NY,Bronze
+74,Customer_74,Los Angeles,NY,Bronze
+75,Customer_75,New York,NY,Gold
+76,Customer_76,Chicago,CA,Bronze
+77,Customer_77,New York,TX,Gold
+78,Customer_78,Chicago,TX,Silver
+79,Customer_79,Los Angeles,NY,Silver
+80,Customer_80,Chicago,NY,Gold
+81,Customer_81,Los Angeles,CA,Bronze
+82,Customer_82,Chicago,CA,Silver
+83,Customer_83,Los Angeles,CA,Bronze
+84,Customer_84,Los Angeles,TX,Silver
+85,Customer_85,Houston,TX,Gold
+86,Customer_86,Los Angeles,TX,Gold
+87,Customer_87,Houston,NY,Gold
+88,Customer_88,Los Angeles,TX,Silver
+89,Customer_89,New York,IL,Bronze
+90,Customer_90,Los Angeles,IL,Bronze
+91,Customer_91,New York,CA,Bronze
+92,Customer_92,New York,TX,Silver
+93,Customer_93,Los Angeles,IL,Silver
+94,Customer_94,New York,CA,Silver
+95,Customer_95,Houston,TX,Silver
+96,Customer_96,Chicago,NY,Silver
+97,Customer_97,Los Angeles,IL,Bronze
+98,Customer_98,New York,NY,Silver
+99,Customer_99,Los Angeles,TX,Silver
+100,Customer_100,Houston,IL,Bronze
+101,Customer_101,Los Angeles,TX,Silver
+102,Customer_102,Los Angeles,NY,Bronze
+103,Customer_103,New York,IL,Bronze
+104,Customer_104,Houston,NY,Gold
+105,Customer_105,Chicago,TX,Gold
+106,Customer_106,Chicago,TX,Gold
+107,Customer_107,New York,NY,Gold
+108,Customer_108,Los Angeles,IL,Silver
+109,Customer_109,New York,NY,Gold
+110,Customer_110,New York,TX,Bronze
+111,Customer_111,New York,NY,Silver
+112,Customer_112,Los Angeles,TX,Gold
+113,Customer_113,Houston,NY,Bronze
+114,Customer_114,New York,IL,Silver
+115,Customer_115,Los Angeles,IL,Silver
+116,Customer_116,Houston,NY,Gold
+117,Customer_117,New York,NY,Silver
+118,Customer_118,Chicago,IL,Bronze
+119,Customer_119,Houston,TX,Silver
+120,Customer_120,New York,IL,Bronze
+121,Customer_121,Houston,TX,Silver
+122,Customer_122,Houston,NY,Gold
+123,Customer_123,Houston,NY,Bronze
+124,Customer_124,Houston,TX,Silver
+125,Customer_125,Houston,NY,Silver
+126,Customer_126,Houston,TX,Silver
+127,Customer_127,New York,CA,Bronze
+128,Customer_128,Chicago,IL,Bronze
+129,Customer_129,Los Angeles,CA,Bronze
+130,Customer_130,Houston,TX,Gold
+131,Customer_131,Los Angeles,IL,Gold
+132,Customer_132,New York,TX,Bronze
+133,Customer_133,Houston,IL,Silver
+134,Customer_134,Chicago,IL,Gold
+135,Customer_135,Los Angeles,IL,Bronze
+136,Customer_136,Houston,IL,Silver
+137,Customer_137,New York,TX,Gold
+138,Customer_138,Chicago,IL,Silver
+139,Customer_139,Los Angeles,IL,Silver
+140,Customer_140,Los Angeles,CA,Silver
+141,Customer_141,Houston,NY,Silver
+142,Customer_142,Chicago,NY,Gold
+143,Customer_143,Chicago,CA,Gold
+144,Customer_144,Chicago,CA,Gold
+145,Customer_145,Chicago,TX,Bronze
+146,Customer_146,New York,TX,Gold
+147,Customer_147,Chicago,TX,Silver
+148,Customer_148,Los Angeles,CA,Gold
+149,Customer_149,Los Angeles,CA,Silver
+150,Customer_150,New York,IL,Bronze
+151,Customer_151,Los Angeles,TX,Silver
+152,Customer_152,Los Angeles,TX,Silver
+153,Customer_153,Chicago,TX,Silver
+154,Customer_154,Los Angeles,NY,Bronze
+155,Customer_155,New York,IL,Gold
+156,Customer_156,Chicago,TX,Gold
+157,Customer_157,Houston,TX,Bronze
+158,Customer_158,Chicago,TX,Silver
+159,Customer_159,New York,NY,Gold
+160,Customer_160,Chicago,NY,Bronze
+161,Customer_161,Chicago,CA,Gold
+162,Customer_162,New York,IL,Bronze
+163,Customer_163,Chicago,CA,Silver
+164,Customer_164,New York,IL,Gold
+165,Customer_165,New York,NY,Bronze
+166,Customer_166,Houston,TX,Gold
+167,Customer_167,Los Angeles,CA,Gold
+168,Customer_168,Los Angeles,TX,Gold
+169,Customer_169,Chicago,CA,Gold
+170,Customer_170,Chicago,NY,Bronze
+171,Customer_171,Houston,NY,Silver
+172,Customer_172,Houston,NY,Bronze
+173,Customer_173,Houston,CA,Bronze
+174,Customer_174,New York,IL,Bronze
+175,Customer_175,Houston,CA,Silver
+176,Customer_176,Houston,IL,Gold
+177,Customer_177,Chicago,CA,Gold
+178,Customer_178,Houston,CA,Gold
+179,Customer_179,New York,NY,Silver
+180,Customer_180,New York,TX,Gold
+181,Customer_181,Chicago,TX,Silver
+182,Customer_182,Houston,IL,Gold
+183,Customer_183,Houston,TX,Gold
+184,Customer_184,New York,CA,Bronze
+185,Customer_185,Houston,CA,Silver
+186,Customer_186,Houston,NY,Bronze
+187,Customer_187,Houston,NY,Bronze
+188,Customer_188,Los Angeles,TX,Bronze
+189,Customer_189,Chicago,IL,Silver
+190,Customer_190,Los Angeles,TX,Silver
+191,Customer_191,Chicago,TX,Gold
+192,Customer_192,New York,TX,Bronze
+193,Customer_193,Houston,TX,Gold
+194,Customer_194,Chicago,CA,Bronze
+195,Customer_195,Los Angeles,IL,Silver
+196,Customer_196,Houston,CA,Silver
+197,Customer_197,New York,IL,Silver
+198,Customer_198,Chicago,NY,Bronze
+199,Customer_199,Chicago,TX,Silver
+200,Customer_200,Chicago,CA,Bronze

@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+
+{% block title %}Reducción de Dimensionalidad - Teoría{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <h1 class="mb-4"><i class="fas fa-compress"></i> Reducción de Dimensionalidad</h1>
+        
+        <div class="theory-content">
+            <h2>Introducción</h2>
+            <p>La reducción de dimensionalidad es el proceso de reducir el número de variables (características) en un dataset mientras se retiene la mayor cantidad de información posible.</p>
+            
+            <h2>¿Por qué Reducir Dimensionalidad?</h2>
+            <ul>
+                <li><strong>Maldición de la dimensionalidad:</strong> Muchas características pueden degradar el rendimiento</li>
+                <li><strong>Visualización:</strong> Difícil visualizar datos en más de 3 dimensiones</li>
+                <li><strong>Velocidad:</strong> Menos características = entrenamiento más rápido</li>
+                <li><strong>Overfitting:</strong> Reducir características puede prevenir sobreajuste</li>
+                <li><strong>Ruido:</strong> Eliminar características irrelevantes mejora la señal</li>
+            </ul>
+            
+            <h2>1. PCA (Principal Component Analysis)</h2>
+            <p>PCA es una técnica de extracción de características que transforma las características originales en un nuevo conjunto de características no correlacionadas llamadas componentes principales.</p>
+            
+            <h3>¿Cómo Funciona PCA?</h3>
+            <ol>
+                <li><strong>Estandarización:</strong> Escala las características</li>
+                <li><strong>Matriz de Covarianza:</strong> Calcula cómo varían las características juntas</li>
+                <li><strong>Eigenvectores y Eigenvalores:</strong> Encuentra las direcciones de máxima varianza</li>
+                <li><strong>Selección de Componentes:</strong> Elige los k componentes principales</li>
+                <li><strong>Transformación:</strong> Proyecta los datos en el nuevo espacio</li>
+            </ol>
+            
+            <h3>Varianza Explicada</h3>
+            <p>Cada componente principal explica un porcentaje de la varianza total:</p>
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <p><strong>Ejemplo:</strong></p>
+                    <ul class="mb-0">
+                        <li>PC1: 45% de varianza</li>
+                        <li>PC2: 30% de varianza</li>
+                        <li>PC3: 15% de varianza</li>
+                        <li>PC4: 10% de varianza</li>
+                    </ul>
+                    <p class="mt-2 mb-0">Con PC1 y PC2 capturas 75% de la información original</p>
+                </div>
+            </div>
+            
+            <h3>Scree Plot</h3>
+            <p>Gráfica que muestra la varianza explicada por cada componente. Ayuda a decidir cuántos componentes mantener.</p>
+            
+            <h3>Ventajas de PCA</h3>
+            <ul>
+                <li>Reduce dimensionalidad manteniendo información</li>
+                <li>Elimina multicolinealidad</li>
+                <li>Mejora visualización</li>
+                <li>Puede mejorar rendimiento de modelos</li>
+            </ul>
+            
+            <h3>Desventajas de PCA</h3>
+            <ul>
+                <li>Los componentes son difíciles de interpretar</li>
+                <li>Asume relaciones lineales</li>
+                <li>Sensible a escala (requiere estandarización)</li>
+                <li>Puede perder información importante</li>
+            </ul>
+            
+            <h3>Cuándo Usar PCA</h3>
+            <ul>
+                <li>Tienes muchas características correlacionadas</li>
+                <li>Necesitas visualizar datos de alta dimensión</li>
+                <li>Quieres reducir ruido</li>
+                <li>La interpretabilidad no es crítica</li>
+            </ul>
+            
+            <h2>2. Selección de Características</h2>
+            <p>A diferencia de PCA que crea nuevas características, la selección elige un subconjunto de las características originales.</p>
+            
+            <h3>Métodos de Selección</h3>
+            
+            <h4>a) Filter Methods (Métodos de Filtro)</h4>
+            <p>Evalúan características independientemente del modelo:</p>
+            
+            <h5>Variance Threshold (Umbral de Varianza)</h5>
+            <ul>
+                <li>Elimina características con baja varianza</li>
+                <li>Características constantes o casi constantes no aportan información</li>
+                <li><strong>Ejemplo:</strong> Eliminar características con varianza < 0.01</li>
+            </ul>
+            
+            <h5>Correlation-based (Basado en Correlación)</h5>
+            <ul>
+                <li>Selecciona características más correlacionadas con el target</li>
+                <li>Elimina características altamente correlacionadas entre sí</li>
+                <li><strong>Umbral común:</strong> |correlación| > 0.8 indica redundancia</li>
+            </ul>
+            
+            <h5>Statistical Tests (Pruebas Estadísticas)</h5>
+            <ul>
+                <li><strong>Chi-cuadrado:</strong> Para características categóricas</li>
+                <li><strong>ANOVA F-test:</strong> Para características numéricas</li>
+                <li><strong>Mutual Information:</strong> Captura relaciones no lineales</li>
+            </ul>
+            
+            <h4>b) Wrapper Methods (Métodos Envolventes)</h4>
+            <p>Evalúan subconjuntos de características usando un modelo:</p>
+            
+            <h5>Recursive Feature Elimination (RFE)</h5>
+            <ol>
+                <li>Entrena modelo con todas las características</li>
+                <li>Elimina la característica menos importante</li>
+                <li>Repite hasta alcanzar el número deseado</li>
+            </ol>
+            <ul>
+                <li><strong>Ventaja:</strong> Considera interacciones entre características</li>
+                <li><strong>Desventaja:</strong> Computacionalmente costoso</li>
+            </ul>
+            
+            <h5>Forward/Backward Selection</h5>
+            <ul>
+                <li><strong>Forward:</strong> Comienza sin características, agrega una a la vez</li>
+                <li><strong>Backward:</strong> Comienza con todas, elimina una a la vez</li>
+            </ul>
+            
+            <h4>c) Embedded Methods (Métodos Embebidos)</h4>
+            <p>La selección ocurre durante el entrenamiento del modelo:</p>
+            
+            <h5>Feature Importance (Importancia de Características)</h5>
+            <ul>
+                <li>Árboles de decisión y Random Forests calculan importancia</li>
+                <li>Selecciona las k características más importantes</li>
+                <li>Rápido y efectivo</li>
+            </ul>
+            
+            <h5>L1 Regularization (Lasso)</h5>
+            <ul>
+                <li>Penaliza coeficientes, algunos se vuelven cero</li>
+                <li>Características con coeficiente cero se eliminan</li>
+                <li>Selección automática durante entrenamiento</li>
+            </ul>
+            
+            <h2>3. Comparación: PCA vs Selección</h2>
+            
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Aspecto</th>
+                            <th>PCA</th>
+                            <th>Selección de Características</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Interpretabilidad</strong></td>
+                            <td>Baja (nuevas características)</td>
+                            <td>Alta (características originales)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Información</strong></td>
+                            <td>Retiene máxima varianza</td>
+                            <td>Puede perder información</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Velocidad</strong></td>
+                            <td>Rápido</td>
+                            <td>Variable (RFE es lento)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Uso</strong></td>
+                            <td>Visualización, preprocesamiento</td>
+                            <td>Interpretación, simplicidad</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h2>4. Mejores Prácticas</h2>
+            
+            <div class="alert alert-success">
+                <h5><i class="fas fa-check-circle"></i> Recomendaciones</h5>
+                <ul class="mb-0">
+                    <li><strong>Estandariza antes de PCA:</strong> PCA es sensible a escala</li>
+                    <li><strong>Usa Scree Plot:</strong> Para decidir número de componentes</li>
+                    <li><strong>Mantén 80-95% de varianza:</strong> Balance entre reducción e información</li>
+                    <li><strong>Prueba múltiples métodos:</strong> Compara resultados</li>
+                    <li><strong>Valida con cross-validation:</strong> Evita overfitting</li>
+                </ul>
+            </div>
+            
+            <div class="alert alert-warning">
+                <h5><i class="fas fa-exclamation-triangle"></i> Cuidado</h5>
+                <ul class="mb-0">
+                    <li><strong>No uses PCA antes de dividir train/test:</strong> Data leakage</li>
+                    <li><strong>PCA no siempre mejora:</strong> Prueba con y sin reducción</li>
+                    <li><strong>Considera el dominio:</strong> Algunas características pueden ser importantes aunque tengan baja varianza</li>
+                </ul>
+            </div>
+            
+            <h2>5. Casos de Uso</h2>
+            
+            <h3>Usar PCA cuando:</h3>
+            <ul>
+                <li>Tienes muchas características correlacionadas</li>
+                <li>Necesitas visualizar datos (reducir a 2-3 dimensiones)</li>
+                <li>Quieres eliminar ruido</li>
+                <li>La interpretabilidad no es crítica</li>
+            </ul>
+            
+            <h3>Usar Selección cuando:</h3>
+            <ul>
+                <li>Necesitas interpretar el modelo</li>
+                <li>Quieres identificar características importantes</li>
+                <li>Tienes características con significado del dominio</li>
+                <li>El dataset no es muy grande</li>
+            </ul>
+            
+            <div class="alert alert-info mt-4">
+                <h5><i class="fas fa-lightbulb"></i> Tip Profesional</h5>
+                <p class="mb-0">
+                    Comienza con selección de características para entender tus datos.
+                    Luego, si necesitas más reducción, aplica PCA. Esta combinación
+                    puede dar los mejores resultados.
+                </p>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{{ url_for('main.practice') }}" class="btn btn-warning btn-lg">
+                    <i class="fas fa-flask"></i> Practicar Reducción
+                </a>
+                <a href="{{ url_for('main.theory') }}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Volver a Teoría
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

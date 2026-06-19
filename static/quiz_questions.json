@@ -1,0 +1,586 @@
+{
+  "data_cleaning": [
+    {
+      "id": 1,
+      "question": "¿Cuál es el método de imputación más apropiado para datos con distribución sesgada?",
+      "options": [
+        "Media",
+        "Mediana",
+        "Moda",
+        "Forward Fill"
+      ],
+      "correct": 1,
+      "explanation": "La mediana es más robusta a valores extremos y es ideal para distribuciones sesgadas, ya que no se ve afectada por outliers como la media."
+    },
+    {
+      "id": 2,
+      "question": "¿Qué técnica de detección de outliers es más apropiada cuando los datos NO siguen una distribución normal?",
+      "options": [
+        "Z-score",
+        "IQR (Rango Intercuartílico)",
+        "Desviación estándar",
+        "Media ± 2σ"
+      ],
+      "correct": 1,
+      "explanation": "El método IQR no asume normalidad en los datos, mientras que Z-score y desviación estándar sí lo hacen."
+    },
+    {
+      "id": 3,
+      "question": "¿Cuándo es apropiado eliminar duplicados completos en un dataset?",
+      "options": [
+        "Siempre, sin excepción",
+        "Nunca, pueden ser datos válidos",
+        "Después de verificar que son errores de captura",
+        "Solo si hay más de 100 duplicados"
+      ],
+      "correct": 2,
+      "explanation": "Los duplicados pueden ser legítimos (ej: múltiples transacciones del mismo cliente). Siempre verifica el contexto antes de eliminar."
+    },
+    {
+      "id": 4,
+      "question": "¿Qué método de imputación considera las relaciones entre características?",
+      "options": [
+        "Media",
+        "Mediana",
+        "KNN Imputation",
+        "Moda"
+      ],
+      "correct": 2,
+      "explanation": "KNN Imputation usa los k vecinos más cercanos considerando todas las características, capturando relaciones entre variables."
+    },
+    {
+      "id": 5,
+      "question": "Si tienes un dataset con 1000 filas y 50 columnas, y una columna tiene 900 valores nulos, ¿qué deberías hacer?",
+      "options": [
+        "Imputar con la media",
+        "Eliminar la columna",
+        "Imputar con KNN",
+        "Usar forward fill"
+      ],
+      "correct": 1,
+      "explanation": "Con 90% de valores nulos, la columna tiene muy poca información útil. Es mejor eliminarla que imputar valores que no representan la realidad."
+    },
+    {
+      "id": 6,
+      "question": "¿Cuál es la principal ventaja de usar Isolation Forest para detectar outliers?",
+      "options": [
+        "Es más rápido que IQR",
+        "Funciona bien en alta dimensionalidad",
+        "No requiere parámetros",
+        "Siempre es más preciso"
+      ],
+      "correct": 1,
+      "explanation": "Isolation Forest es efectivo en datasets de alta dimensionalidad donde métodos tradicionales como IQR pueden fallar."
+    },
+    {
+      "id": 7,
+      "question": "¿Qué porcentaje de valores nulos generalmente se considera aceptable antes de eliminar una columna?",
+      "options": [
+        "10%",
+        "30%",
+        "50%",
+        "Depende del contexto"
+      ],
+      "correct": 3,
+      "explanation": "No hay un umbral universal. Depende del dominio, la importancia de la variable y si los nulos son aleatorios o sistemáticos."
+    },
+    {
+      "id": 8,
+      "question": "¿Cuándo NO deberías eliminar outliers?",
+      "options": [
+        "Cuando representan eventos raros pero válidos",
+        "Cuando hay más de 5% de outliers",
+        "Cuando están en variables categóricas",
+        "Cuando el dataset es pequeño"
+      ],
+      "correct": 0,
+      "explanation": "Los outliers pueden ser información valiosa (ej: fraude, eventos extremos). Eliminarlos puede perder información crítica."
+    },
+    {
+      "id": 9,
+      "question": "¿Qué método de imputación es más apropiado para series temporales?",
+      "options": [
+        "Media",
+        "Mediana",
+        "Forward Fill o Interpolación",
+        "Moda"
+      ],
+      "correct": 2,
+      "explanation": "En series temporales, los valores cercanos en el tiempo están relacionados. Forward fill o interpolación mantienen esta continuidad temporal."
+    },
+    {
+      "id": 10,
+      "question": "¿Cuál es el rango típico para considerar un valor como outlier usando el método IQR?",
+      "options": [
+        "Q1 - 1.5*IQR a Q3 + 1.5*IQR",
+        "Media ± 2σ",
+        "Media ± 3σ",
+        "Min a Max"
+      ],
+      "correct": 0,
+      "explanation": "El método IQR estándar usa 1.5 veces el rango intercuartílico por debajo de Q1 y por encima de Q3."
+    },
+    {
+      "id": 11,
+      "question": "¿Qué tipo de valores nulos son más problemáticos?",
+      "options": [
+        "MCAR (Missing Completely At Random)",
+        "MAR (Missing At Random)",
+        "MNAR (Missing Not At Random)",
+        "Todos son igual de problemáticos"
+      ],
+      "correct": 2,
+      "explanation": "MNAR es más problemático porque los valores faltantes están relacionados con el valor no observado, introduciendo sesgo sistemático."
+    },
+    {
+      "id": 12,
+      "question": "¿Cuál es la mejor práctica al encontrar duplicados parciales (mismas columnas clave pero diferentes valores en otras)?",
+      "options": [
+        "Eliminar todos los duplicados",
+        "Mantener el primero",
+        "Investigar y decidir caso por caso",
+        "Promediar los valores"
+      ],
+      "correct": 2,
+      "explanation": "Los duplicados parciales pueden indicar actualizaciones, errores o registros legítimos. Requieren análisis contextual."
+    }
+  ],
+  "data_transformation": [
+    {
+      "id": 13,
+      "question": "¿Cuándo deberías usar Min-Max Scaling en lugar de Standardization?",
+      "options": [
+        "Cuando necesitas valores entre 0 y 1",
+        "Cuando hay outliers",
+        "Cuando los datos son categóricos",
+        "Siempre es mejor Min-Max"
+      ],
+      "correct": 0,
+      "explanation": "Min-Max es ideal cuando necesitas un rango específico (0-1) y no hay outliers extremos. Es sensible a outliers."
+    },
+    {
+      "id": 14,
+      "question": "¿Qué tipo de encoding es más apropiado para variables ordinales?",
+      "options": [
+        "One-Hot Encoding",
+        "Label Encoding",
+        "Ordinal Encoding",
+        "Target Encoding"
+      ],
+      "correct": 2,
+      "explanation": "Ordinal Encoding preserva el orden natural de las categorías (ej: bajo=1, medio=2, alto=3)."
+    },
+    {
+      "id": 15,
+      "question": "¿Cuál es el principal problema de usar Label Encoding en variables nominales?",
+      "options": [
+        "Es muy lento",
+        "Introduce orden artificial",
+        "No funciona con muchas categorías",
+        "Pierde información"
+      ],
+      "correct": 1,
+      "explanation": "Label Encoding asigna números (0,1,2...) que el modelo puede interpretar como orden, cuando no existe relación ordinal."
+    },
+    {
+      "id": 16,
+      "question": "¿Qué normalización es más robusta a outliers?",
+      "options": [
+        "Min-Max Scaling",
+        "Standard Scaling",
+        "Robust Scaling",
+        "Max Abs Scaling"
+      ],
+      "correct": 2,
+      "explanation": "Robust Scaling usa la mediana y el IQR, que no se ven afectados por outliers extremos."
+    },
+    {
+      "id": 17,
+      "question": "¿Cuándo es apropiado usar One-Hot Encoding?",
+      "options": [
+        "Siempre para variables categóricas",
+        "Para variables nominales con pocas categorías",
+        "Para variables ordinales",
+        "Para variables numéricas"
+      ],
+      "correct": 1,
+      "explanation": "One-Hot es ideal para variables nominales (sin orden) con pocas categorías. Muchas categorías causan alta dimensionalidad."
+    },
+    {
+      "id": 18,
+      "question": "¿Qué problema causa One-Hot Encoding con muchas categorías?",
+      "options": [
+        "Pérdida de información",
+        "Maldición de la dimensionalidad",
+        "Introduce sesgo",
+        "Es muy lento"
+      ],
+      "correct": 1,
+      "explanation": "Cada categoría se convierte en una columna. 100 categorías = 100 nuevas columnas, aumentando dramáticamente la dimensionalidad."
+    },
+    {
+      "id": 19,
+      "question": "¿Cuál es la ventaja principal de Target Encoding?",
+      "options": [
+        "Es más rápido",
+        "Captura relación con la variable objetivo",
+        "No aumenta dimensionalidad",
+        "Funciona con cualquier tipo de dato"
+      ],
+      "correct": 1,
+      "explanation": "Target Encoding reemplaza categorías con la media del target, capturando directamente su relación con la variable objetivo."
+    },
+    {
+      "id": 20,
+      "question": "¿Qué riesgo tiene Target Encoding?",
+      "options": [
+        "Pérdida de información",
+        "Overfitting y data leakage",
+        "No funciona con muchas categorías",
+        "Es muy lento"
+      ],
+      "correct": 1,
+      "explanation": "Target Encoding puede causar overfitting si no se hace correctamente (ej: usando cross-validation) y puede filtrar información del target."
+    },
+    {
+      "id": 21,
+      "question": "¿Cuándo deberías aplicar transformación logarítmica?",
+      "options": [
+        "Siempre a datos numéricos",
+        "Para datos con distribución sesgada positivamente",
+        "Para datos categóricos",
+        "Para datos con outliers"
+      ],
+      "correct": 1,
+      "explanation": "La transformación logarítmica reduce el sesgo en distribuciones con cola larga hacia la derecha, haciéndolas más normales."
+    },
+    {
+      "id": 22,
+      "question": "¿Qué normalización preserva la dispersión de datos sparse?",
+      "options": [
+        "Min-Max Scaling",
+        "Standard Scaling",
+        "Max Abs Scaling",
+        "Robust Scaling"
+      ],
+      "correct": 2,
+      "explanation": "Max Abs Scaling divide por el valor absoluto máximo, preservando ceros y la estructura sparse de los datos."
+    },
+    {
+      "id": 23,
+      "question": "¿Por qué es importante normalizar antes de aplicar algoritmos de distancia (KNN, K-Means)?",
+      "options": [
+        "Para acelerar el cálculo",
+        "Para evitar que características con mayor escala dominen",
+        "Para mejorar la visualización",
+        "No es necesario normalizar"
+      ],
+      "correct": 1,
+      "explanation": "Sin normalización, características con mayor escala (ej: ingresos en miles vs edad en decenas) dominan el cálculo de distancia."
+    },
+    {
+      "id": 24,
+      "question": "¿Qué técnica usarías para convertir texto en números?",
+      "options": [
+        "One-Hot Encoding",
+        "Label Encoding",
+        "TF-IDF o Word Embeddings",
+        "Standard Scaling"
+      ],
+      "correct": 2,
+      "explanation": "Para texto, se usan técnicas especializadas como TF-IDF (frecuencia de términos) o embeddings (representaciones vectoriales)."
+    }
+  ],
+  "data_integration": [
+    {
+      "id": 25,
+      "question": "¿Qué tipo de join mantiene todas las filas de ambas tablas?",
+      "options": [
+        "Inner Join",
+        "Left Join",
+        "Right Join",
+        "Outer Join"
+      ],
+      "correct": 3,
+      "explanation": "Outer Join (Full Outer Join) mantiene todas las filas de ambas tablas, llenando con NaN donde no hay coincidencias."
+    },
+    {
+      "id": 26,
+      "question": "¿Cuándo usarías un Left Join?",
+      "options": [
+        "Cuando quieres solo coincidencias",
+        "Cuando quieres mantener todas las filas de la tabla izquierda",
+        "Cuando quieres todas las filas de ambas tablas",
+        "Cuando las tablas tienen el mismo tamaño"
+      ],
+      "correct": 1,
+      "explanation": "Left Join mantiene todas las filas de la tabla izquierda y agrega información de la derecha donde hay coincidencias."
+    },
+    {
+      "id": 27,
+      "question": "¿Qué problema puede causar un Inner Join?",
+      "options": [
+        "Duplicar filas",
+        "Perder datos que no coinciden",
+        "Crear valores nulos",
+        "Es muy lento"
+      ],
+      "correct": 1,
+      "explanation": "Inner Join solo mantiene filas con coincidencias en ambas tablas, descartando datos que no coinciden."
+    },
+    {
+      "id": 28,
+      "question": "¿Qué sucede si haces un join sin especificar la columna clave?",
+      "options": [
+        "Error",
+        "Join por todas las columnas comunes",
+        "Producto cartesiano",
+        "Join por índice"
+      ],
+      "correct": 1,
+      "explanation": "Por defecto, pandas hace join por todas las columnas con el mismo nombre en ambas tablas."
+    },
+    {
+      "id": 29,
+      "question": "¿Cuál es la diferencia entre merge y concat en pandas?",
+      "options": [
+        "No hay diferencia",
+        "merge une por columnas clave, concat apila datos",
+        "concat es más rápido",
+        "merge solo funciona con 2 tablas"
+      ],
+      "correct": 1,
+      "explanation": "merge une tablas basándose en columnas clave (como SQL joins), concat simplemente apila DataFrames vertical u horizontalmente."
+    },
+    {
+      "id": 30,
+      "question": "¿Qué debes verificar antes de hacer un join?",
+      "options": [
+        "Que las tablas tengan el mismo tamaño",
+        "Que las columnas clave tengan el mismo tipo de dato",
+        "Que no haya valores nulos",
+        "Que las tablas estén ordenadas"
+      ],
+      "correct": 1,
+      "explanation": "Las columnas clave deben tener tipos de datos compatibles, o el join fallará o producirá resultados inesperados."
+    },
+    {
+      "id": 31,
+      "question": "¿Qué puede causar duplicados después de un join?",
+      "options": [
+        "Usar Inner Join",
+        "Relaciones muchos-a-muchos en las claves",
+        "Tablas de diferente tamaño",
+        "Valores nulos en las claves"
+      ],
+      "correct": 1,
+      "explanation": "Si ambas tablas tienen múltiples filas con la misma clave, el join crea todas las combinaciones posibles, multiplicando filas."
+    },
+    {
+      "id": 32,
+      "question": "¿Cuándo usarías concat con axis=0?",
+      "options": [
+        "Para agregar columnas",
+        "Para apilar filas verticalmente",
+        "Para hacer un join",
+        "Para eliminar duplicados"
+      ],
+      "correct": 1,
+      "explanation": "concat con axis=0 apila DataFrames verticalmente (una tabla debajo de otra), agregando filas."
+    },
+    {
+      "id": 33,
+      "question": "¿Qué parámetro de merge controla el tipo de join?",
+      "options": [
+        "type",
+        "how",
+        "method",
+        "join_type"
+      ],
+      "correct": 1,
+      "explanation": "El parámetro 'how' especifica el tipo de join: 'inner', 'left', 'right', 'outer'."
+    },
+    {
+      "id": 34,
+      "question": "¿Qué sucede con columnas del mismo nombre (no clave) después de un merge?",
+      "options": [
+        "Se eliminan",
+        "Se promedian",
+        "Se agregan sufijos (_x, _y)",
+        "Causa error"
+      ],
+      "correct": 2,
+      "explanation": "pandas agrega sufijos (_x, _y por defecto) para distinguir columnas con el mismo nombre de ambas tablas."
+    },
+    {
+      "id": 35,
+      "question": "¿Cuál es la mejor práctica al integrar datos de múltiples fuentes?",
+      "options": [
+        "Hacer todos los joins de una vez",
+        "Validar datos después de cada join",
+        "Usar siempre Inner Join",
+        "Eliminar valores nulos primero"
+      ],
+      "correct": 1,
+      "explanation": "Validar después de cada join ayuda a detectar problemas temprano (duplicados, pérdida de datos, inconsistencias)."
+    },
+    {
+      "id": 36,
+      "question": "¿Qué tipo de join usarías para encontrar filas que NO tienen coincidencias?",
+      "options": [
+        "Inner Join",
+        "Left Join con filtro de nulos",
+        "Right Join",
+        "Cross Join"
+      ],
+      "correct": 1,
+      "explanation": "Left Join seguido de filtrar filas donde las columnas de la tabla derecha son nulas identifica filas sin coincidencias."
+    }
+  ],
+  "dimensionality_reduction": [
+    {
+      "id": 37,
+      "question": "¿Cuál es el objetivo principal de PCA?",
+      "options": [
+        "Eliminar outliers",
+        "Reducir dimensionalidad manteniendo máxima varianza",
+        "Normalizar datos",
+        "Eliminar valores nulos"
+      ],
+      "correct": 1,
+      "explanation": "PCA transforma datos a un nuevo espacio de menor dimensión que captura la máxima varianza posible."
+    },
+    {
+      "id": 38,
+      "question": "¿Por qué debes estandarizar antes de aplicar PCA?",
+      "options": [
+        "Para acelerar el cálculo",
+        "Porque PCA es sensible a la escala de las características",
+        "Para eliminar outliers",
+        "No es necesario estandarizar"
+      ],
+      "correct": 1,
+      "explanation": "PCA se basa en varianza. Características con mayor escala dominarán los componentes principales si no se estandariza."
+    },
+    {
+      "id": 39,
+      "question": "¿Qué indica un Scree Plot?",
+      "options": [
+        "Outliers en los datos",
+        "Varianza explicada por cada componente",
+        "Correlación entre variables",
+        "Valores nulos"
+      ],
+      "correct": 1,
+      "explanation": "El Scree Plot muestra la varianza explicada por cada componente principal, ayudando a decidir cuántos mantener."
+    },
+    {
+      "id": 40,
+      "question": "¿Cuánta varianza se recomienda mantener al aplicar PCA?",
+      "options": [
+        "50%",
+        "70%",
+        "80-95%",
+        "100%"
+      ],
+      "correct": 2,
+      "explanation": "Generalmente se busca mantener 80-95% de la varianza original, balanceando reducción de dimensionalidad con retención de información."
+    },
+    {
+      "id": 41,
+      "question": "¿Cuál es la principal desventaja de PCA?",
+      "options": [
+        "Es muy lento",
+        "Los componentes son difíciles de interpretar",
+        "No funciona con muchas características",
+        "Requiere datos categóricos"
+      ],
+      "correct": 1,
+      "explanation": "Los componentes principales son combinaciones lineales de características originales, perdiendo interpretabilidad directa."
+    },
+    {
+      "id": 42,
+      "question": "¿Qué método de selección de características considera interacciones entre variables?",
+      "options": [
+        "Variance Threshold",
+        "Correlation-based",
+        "Recursive Feature Elimination (RFE)",
+        "Chi-cuadrado"
+      ],
+      "correct": 2,
+      "explanation": "RFE entrena modelos iterativamente, considerando cómo las características interactúan para predecir el target."
+    },
+    {
+      "id": 43,
+      "question": "¿Cuándo usarías selección de características en lugar de PCA?",
+      "options": [
+        "Cuando necesitas visualizar datos",
+        "Cuando la interpretabilidad es importante",
+        "Cuando tienes muchas características",
+        "Siempre es mejor PCA"
+      ],
+      "correct": 1,
+      "explanation": "La selección mantiene características originales, preservando interpretabilidad, mientras PCA crea nuevas características."
+    },
+    {
+      "id": 44,
+      "question": "¿Qué técnica elimina características con baja varianza?",
+      "options": [
+        "PCA",
+        "Variance Threshold",
+        "RFE",
+        "L1 Regularization"
+      ],
+      "correct": 1,
+      "explanation": "Variance Threshold es un método de filtro que elimina características con varianza por debajo de un umbral."
+    },
+    {
+      "id": 45,
+      "question": "¿Qué problema puede causar aplicar PCA antes de dividir train/test?",
+      "options": [
+        "Overfitting",
+        "Data leakage",
+        "Underfitting",
+        "Pérdida de datos"
+      ],
+      "correct": 1,
+      "explanation": "PCA calcula estadísticas (media, varianza) de todos los datos. Si incluyes test, filtras información del test al train."
+    },
+    {
+      "id": 46,
+      "question": "¿Qué método de regularización realiza selección automática de características?",
+      "options": [
+        "L2 (Ridge)",
+        "L1 (Lasso)",
+        "Elastic Net",
+        "Dropout"
+      ],
+      "correct": 1,
+      "explanation": "L1 regularization (Lasso) puede reducir coeficientes a exactamente cero, eliminando efectivamente esas características."
+    },
+    {
+      "id": 47,
+      "question": "¿Cuál es la ventaja de usar Feature Importance de Random Forest?",
+      "options": [
+        "Es el método más preciso",
+        "Es rápido y captura relaciones no lineales",
+        "No requiere entrenamiento",
+        "Funciona con datos categóricos sin encoding"
+      ],
+      "correct": 1,
+      "explanation": "Random Forest calcula importancia durante el entrenamiento y puede capturar relaciones no lineales entre características."
+    },
+    {
+      "id": 48,
+      "question": "¿Qué debes hacer si PCA no mejora el rendimiento de tu modelo?",
+      "options": [
+        "Aumentar el número de componentes",
+        "Probar sin PCA o con selección de características",
+        "Aplicar PCA dos veces",
+        "Cambiar de algoritmo"
+      ],
+      "correct": 1,
+      "explanation": "PCA no siempre mejora el rendimiento. A veces las características originales o un subconjunto seleccionado funcionan mejor."
+    }
+  ]
+}

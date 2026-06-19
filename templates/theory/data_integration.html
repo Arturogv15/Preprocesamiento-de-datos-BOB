@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block title %}Integración de Datos - Teoría{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <h1 class="mb-4"><i class="fas fa-link"></i> Integración de Datos</h1>
+        
+        <div class="theory-content">
+            <h2>Introducción</h2>
+            <p>La integración de datos es el proceso de combinar datos de diferentes fuentes en una vista unificada. Es fundamental cuando trabajamos con múltiples datasets relacionados.</p>
+            
+            <h2>1. Tipos de Joins (Uniones)</h2>
+            <p>Los joins combinan filas de dos o más tablas basándose en una columna relacionada.</p>
+            
+            <h3>Inner Join (Unión Interna)</h3>
+            <p>Retorna solo las filas que tienen coincidencias en ambas tablas.</p>
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h6>Ejemplo:</h6>
+                    <p><strong>Tabla A:</strong> Clientes (ID, Nombre)</p>
+                    <p><strong>Tabla B:</strong> Pedidos (ID_Cliente, Producto)</p>
+                    <p><strong>Resultado:</strong> Solo clientes que han hecho pedidos</p>
+                </div>
+            </div>
+            <ul>
+                <li><strong>Cuándo usar:</strong> Cuando solo necesitas registros que existen en ambas tablas</li>
+                <li><strong>Resultado:</strong> Menor o igual número de filas que las tablas originales</li>
+            </ul>
+            
+            <h3>Left Join (Unión Izquierda)</h3>
+            <p>Retorna todas las filas de la tabla izquierda y las coincidencias de la derecha.</p>
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h6>Ejemplo:</h6>
+                    <p><strong>Resultado:</strong> Todos los clientes, con sus pedidos si existen (NULL si no)</p>
+                </div>
+            </div>
+            <ul>
+                <li><strong>Cuándo usar:</strong> Cuando quieres mantener todos los registros de la tabla principal</li>
+                <li><strong>Resultado:</strong> Al menos tantas filas como la tabla izquierda</li>
+            </ul>
+            
+            <h3>Right Join (Unión Derecha)</h3>
+            <p>Retorna todas las filas de la tabla derecha y las coincidencias de la izquierda.</p>
+            <ul>
+                <li><strong>Cuándo usar:</strong> Similar a Left Join pero priorizando la tabla derecha</li>
+                <li><strong>Nota:</strong> Menos común, generalmente se usa Left Join cambiando el orden</li>
+            </ul>
+            
+            <h3>Outer Join (Unión Externa)</h3>
+            <p>Retorna todas las filas de ambas tablas, con NULL donde no hay coincidencias.</p>
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h6>Ejemplo:</h6>
+                    <p><strong>Resultado:</strong> Todos los clientes Y todos los pedidos, incluso si no coinciden</p>
+                </div>
+            </div>
+            <ul>
+                <li><strong>Cuándo usar:</strong> Cuando necesitas ver todos los datos de ambas tablas</li>
+                <li><strong>Resultado:</strong> Máximo número de filas</li>
+            </ul>
+            
+            <h3>Cross Join (Producto Cartesiano)</h3>
+            <p>Combina cada fila de la primera tabla con cada fila de la segunda.</p>
+            <ul>
+                <li><strong>Cuándo usar:</strong> Raramente, para generar todas las combinaciones posibles</li>
+                <li><strong>Cuidado:</strong> Puede generar datasets muy grandes (n × m filas)</li>
+            </ul>
+            
+            <h2>2. Concatenación</h2>
+            <p>Une datasets apilándolos vertical u horizontalmente.</p>
+            
+            <h3>Concatenación Vertical (axis=0)</h3>
+            <p>Apila datasets uno debajo del otro:</p>
+            <pre><code>df_combined = pd.concat([df1, df2], axis=0)</code></pre>
+            <ul>
+                <li><strong>Requisito:</strong> Mismas columnas</li>
+                <li><strong>Uso:</strong> Combinar datos del mismo tipo de diferentes fuentes</li>
+            </ul>
+            
+            <h3>Concatenación Horizontal (axis=1)</h3>
+            <p>Apila datasets lado a lado:</p>
+            <pre><code>df_combined = pd.concat([df1, df2], axis=1)</code></pre>
+            <ul>
+                <li><strong>Requisito:</strong> Mismo número de filas o índices compatibles</li>
+                <li><strong>Uso:</strong> Agregar nuevas características</li>
+            </ul>
+            
+            <h2>3. Merge (Fusión)</h2>
+            <p>Combina datasets basándose en columnas clave comunes.</p>
+            
+            <h3>Sintaxis Básica</h3>
+            <pre><code>pd.merge(df1, df2, on='columna_clave', how='inner')</code></pre>
+            
+            <h3>Parámetros Importantes</h3>
+            <ul>
+                <li><strong>on:</strong> Columna(s) para hacer el join</li>
+                <li><strong>left_on, right_on:</strong> Cuando las columnas tienen nombres diferentes</li>
+                <li><strong>how:</strong> Tipo de join ('inner', 'left', 'right', 'outer')</li>
+                <li><strong>suffixes:</strong> Sufijos para columnas duplicadas</li>
+            </ul>
+            
+            <h2>4. Manejo de Conflictos</h2>
+            
+            <h3>Columnas Duplicadas</h3>
+            <p>Cuando ambas tablas tienen columnas con el mismo nombre:</p>
+            <pre><code>pd.merge(df1, df2, on='id', suffixes=('_left', '_right'))</code></pre>
+            
+            <h3>Valores Faltantes</h3>
+            <p>Los joins pueden introducir valores NULL:</p>
+            <ul>
+                <li>Left/Right/Outer joins crean NULL donde no hay coincidencias</li>
+                <li>Decide si mantener, eliminar o imputar estos valores</li>
+            </ul>
+            
+            <h3>Duplicados</h3>
+            <p>Si hay múltiples coincidencias, se crean múltiples filas:</p>
+            <ul>
+                <li>Verifica duplicados antes del merge</li>
+                <li>Considera usar <code>drop_duplicates()</code> si es necesario</li>
+            </ul>
+            
+            <h2>5. Mejores Prácticas</h2>
+            
+            <div class="alert alert-info">
+                <h5><i class="fas fa-info-circle"></i> Antes de Integrar</h5>
+                <ul class="mb-0">
+                    <li>Verifica la calidad de las columnas clave</li>
+                    <li>Asegúrate de que los tipos de datos coincidan</li>
+                    <li>Identifica y maneja duplicados</li>
+                    <li>Documenta la lógica de integración</li>
+                </ul>
+            </div>
+            
+            <div class="alert alert-warning">
+                <h5><i class="fas fa-exclamation-triangle"></i> Cuidado Con</h5>
+                <ul class="mb-0">
+                    <li><strong>Explosión de datos:</strong> Joins pueden multiplicar filas</li>
+                    <li><strong>Pérdida de datos:</strong> Inner joins pueden eliminar información</li>
+                    <li><strong>Memoria:</strong> Cross joins pueden ser muy grandes</li>
+                    <li><strong>Performance:</strong> Joins en datasets grandes son costosos</li>
+                </ul>
+            </div>
+            
+            <h2>6. Casos de Uso Comunes</h2>
+            
+            <h3>Enriquecimiento de Datos</h3>
+            <p>Agregar información adicional de otra fuente:</p>
+            <ul>
+                <li>Transacciones + Información de clientes</li>
+                <li>Productos + Categorías</li>
+            </ul>
+            
+            <h3>Consolidación</h3>
+            <p>Combinar datos de múltiples períodos o regiones:</p>
+            <ul>
+                <li>Ventas de diferentes meses</li>
+                <li>Datos de diferentes sucursales</li>
+            </ul>
+            
+            <h3>Análisis Relacional</h3>
+            <p>Explorar relaciones entre entidades:</p>
+            <ul>
+                <li>Clientes y sus compras</li>
+                <li>Estudiantes y sus calificaciones</li>
+            </ul>
+            
+            <div class="alert alert-success mt-4">
+                <h5><i class="fas fa-lightbulb"></i> Consejo Pro</h5>
+                <p class="mb-0">
+                    Siempre verifica el número de filas antes y después del merge.
+                    Un cambio inesperado puede indicar problemas con las claves o duplicados.
+                </p>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{{ url_for('main.practice') }}" class="btn btn-info btn-lg text-white">
+                    <i class="fas fa-flask"></i> Practicar Integración
+                </a>
+                <a href="{{ url_for('main.theory') }}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Volver a Teoría
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block title %}Mi Progreso - Preprocesamiento de Datos{% endblock %}
+
+{% block content %}
+<h1 class="mb-4"><i class="fas fa-chart-line"></i> Mi Progreso</h1>
+
+<div class="row">
+    <!-- Progress Summary -->
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-tasks"></i> Resumen de Progreso</h5>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <h3 class="text-primary">{{ progress_records|length }}</h3>
+                        <p>Módulos Iniciados</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3 class="text-success">{{ quiz_results|length }}</h3>
+                        <p>Quizzes Completados</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3 class="text-info">{{ pipelines|length }}</h3>
+                        <p>Pipelines Guardados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Module Progress -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-book"></i> Progreso por Módulo</h5>
+            </div>
+            <div class="card-body">
+                {% if progress_records %}
+                <div class="list-group">
+                    {% for record in progress_records %}
+                    <div class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">{{ record.module_name|replace('_', ' ')|title }}</h6>
+                                <small class="text-muted">{{ record.module_type|title }}</small>
+                            </div>
+                            {% if record.completed %}
+                            <span class="badge bg-success">
+                                <i class="fas fa-check"></i> Completado
+                            </span>
+                            {% else %}
+                            <span class="badge bg-warning">
+                                <i class="fas fa-clock"></i> En progreso
+                            </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-muted text-center">Aún no has comenzado ningún módulo</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Results -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-question-circle"></i> Resultados de Quizzes</h5>
+            </div>
+            <div class="card-body">
+                {% if quiz_results %}
+                <div class="list-group">
+                    {% for result in quiz_results %}
+                    <div class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">{{ result.quiz_id|replace('_', ' ')|title }}</h6>
+                                <small class="text-muted">{{ result.completed_at.strftime('%d/%m/%Y %H:%M') }}</small>
+                            </div>
+                            <div>
+                                <span class="badge {% if result.score >= 70 %}bg-success{% else %}bg-warning{% endif %}">
+                                    {{ result.score }}%
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-muted text-center">Aún no has completado ningún quiz</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Saved Pipelines -->
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-save"></i> Pipelines Guardados</h5>
+            </div>
+            <div class="card-body">
+                {% if pipelines %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Dataset</th>
+                                <th>Pasos</th>
+                                <th>Creado</th>
+                                <th>Última Actualización</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for pipeline in pipelines %}
+                            <tr>
+                                <td><strong>{{ pipeline.name }}</strong></td>
+                                <td>{{ pipeline.dataset_name or 'N/A' }}</td>
+                                <td><span class="badge bg-primary">{{ pipeline.steps|length }} pasos</span></td>
+                                <td>{{ pipeline.created_at.strftime('%d/%m/%Y') }}</td>
+                                <td>{{ pipeline.updated_at.strftime('%d/%m/%Y %H:%M') }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p class="text-muted text-center">Aún no has guardado ningún pipeline</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

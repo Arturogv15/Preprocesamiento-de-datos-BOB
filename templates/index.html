@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - Preprocesamiento de Datos{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="jumbotron bg-primary text-white p-5 rounded">
+    <h1 class="display-4">Bienvenido a la Plataforma de Preprocesamiento de Datos</h1>
+    <p class="lead">Aprende y practica técnicas esenciales de preprocesamiento de datos para minería de datos</p>
+    <hr class="my-4 bg-white">
+    <p>Una plataforma interactiva diseñada para estudiantes de minería de datos</p>
+    {% if not current_user.is_authenticated %}
+    <a class="btn btn-light btn-lg me-2" href="{{ url_for('auth.register') }}" role="button">
+        <i class="fas fa-user-plus"></i> Registrarse
+    </a>
+    <a class="btn btn-outline-light btn-lg" href="{{ url_for('auth.login') }}" role="button">
+        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+    </a>
+    {% else %}
+    <a class="btn btn-light btn-lg" href="{{ url_for('main.dashboard') }}" role="button">
+        <i class="fas fa-tachometer-alt"></i> Ir al Dashboard
+    </a>
+    {% endif %}
+</div>
+
+<!-- Features Section -->
+<div class="row mt-5">
+    <div class="col-md-12 mb-4">
+        <h2 class="text-center mb-4">¿Qué aprenderás?</h2>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-broom fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Limpieza de Datos</h5>
+                <p class="card-text">
+                    Manejo de valores faltantes, eliminación de duplicados y detección de outliers
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-exchange-alt fa-3x text-success mb-3"></i>
+                <h5 class="card-title">Transformación</h5>
+                <p class="card-text">
+                    Normalización, estandarización y codificación de variables categóricas
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-link fa-3x text-info mb-3"></i>
+                <h5 class="card-title">Integración</h5>
+                <p class="card-text">
+                    Combina datasets usando diferentes tipos de joins y merges
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-compress fa-3x text-warning mb-3"></i>
+                <h5 class="card-title">Reducción</h5>
+                <p class="card-text">
+                    PCA y selección de características para reducir dimensionalidad
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- How It Works Section -->
+<div class="row mt-5">
+    <div class="col-md-12 mb-4">
+        <h2 class="text-center mb-4">¿Cómo funciona?</h2>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card border-primary h-100">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-book"></i> 1. Aprende la Teoría</h5>
+            </div>
+            <div class="card-body">
+                <p>Lee contenido teórico detallado sobre cada técnica de preprocesamiento con ejemplos prácticos</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card border-success h-100">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="fas fa-flask"></i> 2. Practica</h5>
+            </div>
+            <div class="card-body">
+                <p>Aplica las técnicas en datasets reales usando nuestro laboratorio interactivo</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card border-info h-100">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0"><i class="fas fa-question-circle"></i> 3. Evalúate</h5>
+            </div>
+            <div class="card-body">
+                <p>Toma quizzes para verificar tu comprensión y seguir tu progreso</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features List -->
+<div class="row mt-5">
+    <div class="col-md-12 mb-4">
+        <h2 class="text-center mb-4">Características de la Plataforma</h2>
+    </div>
+    
+    <div class="col-md-6">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <i class="fas fa-check text-success"></i> Datasets pre-cargados listos para usar
+            </li>
+            <li class="list-group-item">
+                <i class="fas fa-check text-success"></i> Sube tus propios datasets
+            </li>
+            <li class="list-group-item">
+                <i class="fas fa-check text-success"></i> Visualizaciones interactivas
+            </li>
+            <li class="list-group-item">
+                <i class="fas fa-check text-success"></i> Análisis exploratorio de datos (EDA)
+            </li>
+        </ul>
+    </div>
+    
+    <div class="col-md-6">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <i class="fas fa-check text-success"></i> Guarda y reutiliza pipelines
+            </li>
+            <li class="list-group-item">
+                <i class="fas fa-check text-success"></i> Seguimiento de progreso
+            </li>
+            <li class="list-group-item">
+                <i class="fas fa-check text-success"></i> Quizzes interactivos
+            </li>
+            <li class="list-group-item">
+                <i class="fas fa-check text-success"></i> Exporta datos procesados
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- CTA Section -->
+{% if not current_user.is_authenticated %}
+<div class="row mt-5">
+    <div class="col-md-12">
+        <div class="card bg-light">
+            <div class="card-body text-center p-5">
+                <h3>¿Listo para comenzar?</h3>
+                <p class="lead">Regístrate ahora y comienza tu viaje en el preprocesamiento de datos</p>
+                <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-rocket"></i> Comenzar Ahora
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

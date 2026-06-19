@@ -1,0 +1,123 @@
+{
+  "iris.csv": {
+    "name": "Iris Dataset",
+    "description": "Classic dataset with measurements of iris flowers",
+    "rows": 150,
+    "columns": 5,
+    "use_cases": [
+      "Classification",
+      "Clustering",
+      "Visualization"
+    ],
+    "has_missing": true,
+    "has_outliers": false,
+    "target": "species"
+  },
+  "wine.csv": {
+    "name": "Wine Quality Dataset",
+    "description": "Chemical analysis of wines",
+    "rows": 178,
+    "columns": 14,
+    "use_cases": [
+      "Classification",
+      "Feature Selection"
+    ],
+    "has_missing": true,
+    "has_outliers": true,
+    "target": "wine_class"
+  },
+  "breast_cancer.csv": {
+    "name": "Breast Cancer Dataset",
+    "description": "Features computed from breast mass images",
+    "rows": 569,
+    "columns": 31,
+    "use_cases": [
+      "Classification",
+      "Dimensionality Reduction"
+    ],
+    "has_missing": true,
+    "has_outliers": false,
+    "target": "diagnosis"
+  },
+  "titanic.csv": {
+    "name": "Titanic Dataset",
+    "description": "Passenger data from the Titanic disaster",
+    "rows": 891,
+    "columns": 12,
+    "use_cases": [
+      "Classification",
+      "Data Cleaning",
+      "Feature Engineering"
+    ],
+    "has_missing": true,
+    "has_outliers": false,
+    "target": "Survived"
+  },
+  "california_housing.csv": {
+    "name": "California Housing Dataset",
+    "description": "Housing prices in California districts",
+    "rows": 20640,
+    "columns": 9,
+    "use_cases": [
+      "Regression",
+      "Feature Selection",
+      "Scaling"
+    ],
+    "has_missing": true,
+    "has_outliers": true,
+    "target": "MedHouseVal"
+  },
+  "customer_data.csv": {
+    "name": "Customer Data",
+    "description": "Synthetic customer data with quality issues",
+    "rows": 1020,
+    "columns": 10,
+    "use_cases": [
+      "Data Cleaning",
+      "Outlier Detection",
+      "Duplicate Removal"
+    ],
+    "has_missing": true,
+    "has_outliers": true,
+    "target": "is_active"
+  },
+  "sales_transactions.csv": {
+    "name": "Sales Transactions",
+    "description": "Sales transaction records",
+    "rows": 500,
+    "columns": 7,
+    "use_cases": [
+      "Data Integration",
+      "Time Series Analysis"
+    ],
+    "has_missing": false,
+    "has_outliers": false,
+    "target": "total_amount"
+  },
+  "products.csv": {
+    "name": "Product Catalog",
+    "description": "Product information for sales data",
+    "rows": 50,
+    "columns": 4,
+    "use_cases": [
+      "Data Integration",
+      "Joins"
+    ],
+    "has_missing": false,
+    "has_outliers": false,
+    "target": null
+  },
+  "customers.csv": {
+    "name": "Customer Information",
+    "description": "Customer details for sales data",
+    "rows": 200,
+    "columns": 5,
+    "use_cases": [
+      "Data Integration",
+      "Joins"
+    ],
+    "has_missing": false,
+    "has_outliers": false,
+    "target": null
+  }
+}

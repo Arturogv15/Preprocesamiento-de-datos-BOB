@@ -1,0 +1,271 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Preprocesamiento de Datos{% endblock %}
+
+{% block content %}
+<h1 class="mb-4"><i class="fas fa-tachometer-alt"></i> Dashboard</h1>
+
+<!-- Welcome Message -->
+<div class="alert alert-info">
+    <h4 class="alert-heading">¡Bienvenido, {{ current_user.username }}!</h4>
+    <p class="mb-0">Aquí puedes ver tu progreso y continuar con tu aprendizaje.</p>
+</div>
+
+<!-- Progress Overview -->
+<div class="row mb-4">
+    <div class="col-md-3 mb-3">
+        <div class="card bg-primary text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="card-title">Progreso General</h6>
+                        <h2 class="mb-0">{{ "%.0f"|format(progress_percentage) }}%</h2>
+                    </div>
+                    <i class="fas fa-chart-line fa-3x opacity-50"></i>
+                </div>
+            </div>
+            <div class="card-footer">
+                <small>{{ completed_modules }} de {{ total_modules }} módulos</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="card bg-success text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="card-title">Módulos Completados</h6>
+                        <h2 class="mb-0">{{ completed_modules }}</h2>
+                    </div>
+                    <i class="fas fa-check-circle fa-3x opacity-50"></i>
+                </div>
+            </div>
+            <div class="card-footer">
+                <small>De {{ total_modules }} totales</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="card bg-info text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="card-title">Quizzes Realizados</h6>
+                        <h2 class="mb-0">{{ total_quizzes }}</h2>
+                    </div>
+                    <i class="fas fa-question-circle fa-3x opacity-50"></i>
+                </div>
+            </div>
+            <div class="card-footer">
+                <small>Promedio: {{ "%.1f"|format(avg_score) }}%</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="card bg-warning text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="card-title">Pipelines Guardados</h6>
+                        <h2 class="mb-0">{{ pipelines|length }}</h2>
+                    </div>
+                    <i class="fas fa-save fa-3x opacity-50"></i>
+                </div>
+            </div>
+            <div class="card-footer">
+                <small>Reutilizables</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Progress Bar -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="fas fa-tasks"></i> Progreso de Aprendizaje</h5>
+    </div>
+    <div class="card-body">
+        <div class="progress" style="height: 30px;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                 role="progressbar" 
+                 style="width: {{ progress_percentage }}%"
+                 aria-valuenow="{{ progress_percentage }}" 
+                 aria-valuemin="0" 
+                 aria-valuemax="100">
+                {{ "%.0f"|format(progress_percentage) }}%
+            </div>
+        </div>
+        <p class="mt-2 mb-0 text-muted">
+            <small>Has completado {{ completed_modules }} de {{ total_modules }} módulos disponibles</small>
+        </p>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h4 class="mb-3"><i class="fas fa-bolt"></i> Acciones Rápidas</h4>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <a href="{{ url_for('main.theory') }}" class="text-decoration-none">
+            <div class="card h-100 hover-shadow">
+                <div class="card-body text-center">
+                    <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">Estudiar Teoría</h5>
+                    <p class="card-text text-muted">Aprende conceptos fundamentales</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <a href="{{ url_for('main.practice') }}" class="text-decoration-none">
+            <div class="card h-100 hover-shadow">
+                <div class="card-body text-center">
+                    <i class="fas fa-flask fa-3x text-success mb-3"></i>
+                    <h5 class="card-title">Laboratorio</h5>
+                    <p class="card-text text-muted">Practica con datasets reales</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <a href="{{ url_for('main.quiz_list') }}" class="text-decoration-none">
+            <div class="card h-100 hover-shadow">
+                <div class="card-body text-center">
+                    <i class="fas fa-question-circle fa-3x text-info mb-3"></i>
+                    <h5 class="card-title">Tomar Quiz</h5>
+                    <p class="card-text text-muted">Evalúa tu conocimiento</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <a href="{{ url_for('main.progress') }}" class="text-decoration-none">
+            <div class="card h-100 hover-shadow">
+                <div class="card-body text-center">
+                    <i class="fas fa-chart-line fa-3x text-warning mb-3"></i>
+                    <h5 class="card-title">Ver Progreso</h5>
+                    <p class="card-text text-muted">Revisa tu avance detallado</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<!-- Recent Pipelines -->
+{% if pipelines %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="fas fa-history"></i> Pipelines Recientes</h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Dataset</th>
+                        <th>Pasos</th>
+                        <th>Última Actualización</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pipeline in pipelines %}
+                    <tr>
+                        <td><strong>{{ pipeline.name }}</strong></td>
+                        <td>{{ pipeline.dataset_name or 'N/A' }}</td>
+                        <td><span class="badge bg-primary">{{ pipeline.steps|length }} pasos</span></td>
+                        <td>{{ pipeline.updated_at.strftime('%d/%m/%Y %H:%M') }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary" title="Cargar">
+                                <i class="fas fa-upload"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" title="Eliminar">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Learning Path -->
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="fas fa-road"></i> Ruta de Aprendizaje Sugerida</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="card border-primary">
+                    <div class="card-body">
+                        <h6 class="card-title"><i class="fas fa-broom text-primary"></i> 1. Limpieza de Datos</h6>
+                        <p class="card-text small">Aprende a manejar valores faltantes, duplicados y outliers</p>
+                        <a href="{{ url_for('main.theory_module', module_id='data_cleaning') }}" 
+                           class="btn btn-sm btn-primary">Comenzar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-3">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <h6 class="card-title"><i class="fas fa-exchange-alt text-success"></i> 2. Transformación de Datos</h6>
+                        <p class="card-text small">Normalización, estandarización y codificación</p>
+                        <a href="{{ url_for('main.theory_module', module_id='data_transformation') }}" 
+                           class="btn btn-sm btn-success">Comenzar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-3">
+                <div class="card border-info">
+                    <div class="card-body">
+                        <h6 class="card-title"><i class="fas fa-link text-info"></i> 3. Integración de Datos</h6>
+                        <p class="card-text small">Combina datasets con diferentes tipos de joins</p>
+                        <a href="{{ url_for('main.theory_module', module_id='data_integration') }}" 
+                           class="btn btn-sm btn-info">Comenzar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-3">
+                <div class="card border-warning">
+                    <div class="card-body">
+                        <h6 class="card-title"><i class="fas fa-compress text-warning"></i> 4. Reducción de Dimensionalidad</h6>
+                        <p class="card-text small">PCA y selección de características</p>
+                        <a href="{{ url_for('main.theory_module', module_id='dimensionality_reduction') }}" 
+                           class="btn btn-sm btn-warning">Comenzar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.hover-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+.opacity-50 {
+    opacity: 0.5;
+}
+</style>
+{% endblock %}
