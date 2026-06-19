@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Data Preprocessing Educational Platform
 
 An interactive web application designed for teaching data preprocessing concepts in data mining courses. Students can learn theory, practice techniques with real datasets, take quizzes, and track their progress.
@@ -642,7 +642,3 @@ For questions or issues:
 - [scikit-learn Documentation](https://scikit-learn.org/stable/)
 - [Bootstrap Documentation](https://getbootstrap.com/docs/)
 
----
-
->>>>>>> 5cacc14741e04989bfeb01a4c6f9a705353a88f4
-**Ready to start building?** Review the [Implementation Roadmap](IMPLEMENTATION_ROADMAP.md) and let's begin! 🚀
